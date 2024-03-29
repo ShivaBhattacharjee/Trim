@@ -1,16 +1,23 @@
-"use client"
+"use client";
 import ShareBtn from "@/components/ShareBtn";
 import Toast from "@/utils/toast";
 import axios from "axios";
-import { Gauge , X , Clipboard, Heart , MousePointerClick } from "lucide-react";
+import { Gauge, X, Clipboard, Heart, MousePointerClick } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
+
+interface ResponseProps {
+  data: {
+    shortUrl: string;
+    longUrl: string;
+  };
+}
 
 const page = () => {
   const [longUrl, setLongUrl] = useState<string>("");
   const [isUrlGenerated, setIsUrlGenerated] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [response, setResponse] = useState<any>({});
+  const [response, setResponse] = useState<ResponseProps | {}>({});
 
   const handleSubmit = async () => {
     const data = {
@@ -40,6 +47,19 @@ const page = () => {
       setIsLoading(false);
     }
   };
+  const copyToClipboard = async () => {
+    try {
+      if ("data" in response) {
+        await navigator.clipboard.writeText(
+          `trim.theshiva.xyz/${response.data.shortUrl || ""}`
+        );
+        Toast.SuccessshowToast("URL Copied to Clipboard");
+      }
+    } catch (err) {
+      console.error("Failed to copy:", err);
+      Toast.ErrorShowToast("Failed to copy URL to Clipboard");
+    }
+  };
   return (
     <section className="flex p-4 md:p-0 justify-center items-center gap-7 w-full flex-col min-h-[90vh] max-w-[1200px] m-auto">
       <h1 className=" text-4xl md:text-6xl w-full font-Montserrat   mb-3  text-center font-bold bg-gradient-to-r from-purple-700 via-blue-300 to-orange-400 text-transparent bg-clip-text animate-gradient">
@@ -64,10 +84,18 @@ const page = () => {
           <div className="flex justify-end w-full items-end">
             <X onClick={() => setIsUrlGenerated(false)} />
           </div>
-          <h1 className=" text-xl md:text-2xl">Url: trim.theshiva.xyz/{response.data.shortUrl} </h1>
+          <h1 className="text-xl md:text-2xl">
+            Url: trim.theshiva.xyz/
+            {(response as ResponseProps)?.data?.shortUrl || ""}
+          </h1>
+
           <div className="flex gap-3 w-full justify-end items-end">
-            <Clipboard />
-            {response.data && <ShareBtn url={`trim.theshiva.xyz/${response.data.shortUrl}`} />}
+            <Clipboard onClick={copyToClipboard} />
+            {(response as ResponseProps)?.data && (
+              <ShareBtn
+                url={`trim.theshiva.xyz/${(response as ResponseProps)?.data?.shortUrl || ""}`}
+              />
+            )}
           </div>
         </div>
       )}
