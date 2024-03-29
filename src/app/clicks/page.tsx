@@ -43,7 +43,7 @@ const Page = () => {
                 </button>
                 {renderClickDiv ? (
                     <div className=" h-32 md:w-1/2 md:m-auto md:mt-8 flex min-h-full  items-center text-2xl font-bold text-center justify-center w-full rounded-lg bg-blue-600 mt-5">
-                        <h1>Total Clicks : {data?.data || "unknown"}</h1>
+                        <h1>Total Clicks : {data?.data || 0}</h1>
                     </div>
                 ) : (
                     <div className="flex flex-col md:items-start md:justify-start gap-3 mt-7">
