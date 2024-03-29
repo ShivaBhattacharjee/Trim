@@ -6,14 +6,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma:generate": "bunx dotenv -e .env.local -- prisma generate",
+    "migrate:dev": "bunx dotenv -e .env.local -- prisma migrate dev",
+    "prisma:studio": "bunx dotenv -e .env.local -- prisma studio",
+    "migrate": "bunx dotenv -e .env.local -- prisma migrate deploy",
+    "build:production": "bunx dotenv -e .env.local -- npm run migrate && npm run generate && npm run build"
   },
   "dependencies": {
+    "@prisma/client": "^5.11.0",
+    "next": "14.1.4",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.4"
+    "react-dom": "^18"
   },
   "devDependencies": {
+    "prisma": "^5.11.0",
+    "dotenv-cli": "^7.4.1",
     "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
