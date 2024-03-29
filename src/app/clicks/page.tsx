@@ -1,11 +1,12 @@
 "use client";
-import Toast from "@/utils/toast";
+import React, { useState } from "react";
 import axios from "axios";
 import { ArrowLeft, Search } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
 
-export const page = () => {
+import Toast from "@/utils/toast";
+
+export const Page = () => {
   const [shortid, setShortId] = useState<string>("");
   const [renderClickDiv, setRenderClickDiv] = useState<boolean>(false);
   const [loading, setIsLoading] = useState<boolean>(false);
@@ -70,4 +71,4 @@ export const page = () => {
     </>
   );
 };
-export default page;
+export default Page;

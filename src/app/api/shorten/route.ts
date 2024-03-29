@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from "next/server";
+
 import { prisma } from "@/Database/db";
 import { HTTP_ERROR_CODES } from "@/enums/enum";
-import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {

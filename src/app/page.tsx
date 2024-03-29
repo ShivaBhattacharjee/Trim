@@ -1,17 +1,18 @@
 "use client";
-import ShareBtn from "@/components/ShareBtn";
-import Toast from "@/utils/toast";
+import React, { useState } from "react";
 import axios from "axios";
 import {
-  Gauge,
-  X,
   Clipboard,
+  Copy,
+  Gauge,
   Heart,
   MousePointerClick,
-  Copy,
+  X,
 } from "lucide-react";
 import Link from "next/link";
-import React, { useState } from "react";
+
+import ShareBtn from "@/components/ShareBtn";
+import Toast from "@/utils/toast";
 
 interface ResponseProps {
   data: {
@@ -20,7 +21,7 @@ interface ResponseProps {
   };
 }
 
-const page = () => {
+const Page = () => {
   const [longUrl, setLongUrl] = useState<string>("");
   const [isUrlGenerated, setIsUrlGenerated] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -141,4 +142,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
