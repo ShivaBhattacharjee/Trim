@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} relative overflow-hidden bg-black text-white min-h-screen`}
+        className={`${inter.className} relative overflow-hidden bg-black text-white min-h-screen max-w-[1200px] m-auto`}
       >
         <Toaster />
         <Navbar />

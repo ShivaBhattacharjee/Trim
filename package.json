@@ -7,11 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prisma:generate": "bunx dotenv -e .env.local -- prisma generate",
-    "migrate:dev": "bunx dotenv -e .env.local -- prisma migrate dev",
-    "prisma:studio": "bunx dotenv -e .env.local -- prisma studio",
-    "migrate": "bunx dotenv -e .env.local -- prisma migrate deploy",
-    "build:production": "bunx dotenv -e .env.local -- npm run migrate && npm run generate && npm run build"
+    "prisma:generate": "bunx dotenv -e .env -- prisma generate",
+    "migrate:dev": "bunx dotenv -e .env -- prisma migrate dev",
+    "prisma:studio": "bunx dotenv -e .env -- prisma studio",
+    "migrate": "bunx dotenv -e .env -- prisma migrate deploy",
+    "build:production": "bunx dotenv -e .env -- npm run migrate && npm run generate && npm run build"
   },
   "dependencies": {
     "@prisma/client": "^5.11.0",

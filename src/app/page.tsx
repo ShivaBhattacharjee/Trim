@@ -73,7 +73,7 @@ const page = () => {
     }
   };
   return (
-    <section className="flex p-4 md:p-0 justify-center items-center gap-7 w-full flex-col min-h-[90vh] max-w-[1200px] m-auto">
+    <section className="flex p-4 md:p-0 justify-center items-center gap-7 w-full flex-col min-h-[90vh] ">
       <h1 className=" text-4xl md:text-6xl w-full font-Montserrat   mb-3  text-center font-bold bg-gradient-to-r from-purple-700 via-blue-300 to-orange-400 text-transparent bg-clip-text animate-gradient">
         Shorten Your Links
       </h1>
@@ -103,9 +103,9 @@ const page = () => {
 
           <div className="flex gap-3 w-full justify-end items-end">
             {isCopied ? (
-              <Clipboard />
+              <Copy />
             ) : (
-              <Copy onClick={copyToClipboard} className=" cursor-pointer" />
+              <Clipboard onClick={copyToClipboard} className=" cursor-pointer" />
             )}
             {(response as ResponseProps)?.data && (
               <ShareBtn
