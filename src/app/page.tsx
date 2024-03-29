@@ -2,7 +2,14 @@
 import ShareBtn from "@/components/ShareBtn";
 import Toast from "@/utils/toast";
 import axios from "axios";
-import { Gauge, X, Clipboard, Heart, MousePointerClick } from "lucide-react";
+import {
+  Gauge,
+  X,
+  Clipboard,
+  Heart,
+  MousePointerClick,
+  Copy,
+} from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -18,6 +25,7 @@ const page = () => {
   const [isUrlGenerated, setIsUrlGenerated] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [response, setResponse] = useState<ResponseProps | {}>({});
+  const [isCopied, setIsCopied] = useState<boolean>(false);
 
   const handleSubmit = async () => {
     const data = {
@@ -51,9 +59,13 @@ const page = () => {
     try {
       if ("data" in response) {
         await navigator.clipboard.writeText(
-          `trim.theshiva.xyz/${response.data.shortUrl || ""}`
+          `${process.env.NEXT_PUBLIC_APP_URL || "https://trim.theshiva.xyz"}/${response.data.shortUrl || ""}`
         );
+        setIsCopied(true);
         Toast.SuccessshowToast("URL Copied to Clipboard");
+        setTimeout(() => {
+          setIsCopied(false);
+        }, 2000);
       }
     } catch (err) {
       console.error("Failed to copy:", err);
@@ -74,9 +86,9 @@ const page = () => {
         />
         <button
           onClick={handleSubmit}
-          className=" flex justify-center items-center gap-2 font-semibold ml-0 md:ml-5 mt-2 md:mt-0 w-full md:w-32  bg-white rounded-lg hover:border-2 hover:border-white/20 duration-200 text-black hover:text-white  hover:bg-transparent p-4"
+          className=" flex justify-center items-center gap-2 font-semibold ml-0 md:ml-5 mt-2 md:mt-0 w-full md:w-44  bg-white rounded-lg hover:border-2 hover:border-white/20 duration-200 text-black hover:text-white  hover:bg-transparent p-4"
         >
-          <Gauge /> {isLoading ? "Loading" : "Shorten"}
+          <Gauge /> {isLoading ? "Shortening" : "Shorten"}
         </button>
       </div>
       {isUrlGenerated && (
@@ -85,15 +97,21 @@ const page = () => {
             <X onClick={() => setIsUrlGenerated(false)} />
           </div>
           <h1 className="text-xl md:text-2xl">
-            Url: trim.theshiva.xyz/
+             {process.env.NEXT_PUBLIC_APP_URL || "https://trim.theshiva.xyz"}/
             {(response as ResponseProps)?.data?.shortUrl || ""}
           </h1>
 
           <div className="flex gap-3 w-full justify-end items-end">
-            <Clipboard onClick={copyToClipboard} />
+            {isCopied ? (
+              <Clipboard />
+            ) : (
+              <Copy onClick={copyToClipboard} className=" cursor-pointer" />
+            )}
             {(response as ResponseProps)?.data && (
               <ShareBtn
-                url={`trim.theshiva.xyz/${(response as ResponseProps)?.data?.shortUrl || ""}`}
+                url={`${process.env.NEXT_PUBLIC_APP_URL || "https://trim.theshiva.xyz"}/${
+                  (response as ResponseProps)?.data?.shortUrl || ""
+                }`}
               />
             )}
           </div>
@@ -101,7 +119,7 @@ const page = () => {
       )}
       <Link
         href={"/clicks"}
-        className="flex justify-center items-center gap-3 w-full md:w-1/2 bg-transparent text-whie  font-medium border-2 border-white/20 p-4 rounded-lg"
+        className="flex justify-center items-center gap-3 w-full md:w-1/3 bg-transparent text-whie  font-medium border-2 border-white/20 p-4 rounded-lg"
       >
         <MousePointerClick />
         Get No Of Clicks

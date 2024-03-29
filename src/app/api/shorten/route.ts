@@ -17,6 +17,17 @@ export async function POST(request: NextRequest) {
         }
       );
     }
+    if(!url.startsWith("http")){
+      return NextResponse.json(
+        {
+          message: "URL is invalid",
+          status: HTTP_ERROR_CODES.BAD_REQUEST,
+        },
+        {
+          status: HTTP_ERROR_CODES.BAD_REQUEST,
+        }
+      );
+    }
     // logic to shorten the url
     try {
       const existingUrl = await prisma.urls.findUnique({
