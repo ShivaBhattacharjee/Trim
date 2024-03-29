@@ -3,7 +3,9 @@ import { notFound, redirect } from "next/navigation"; // Import redirect functio
 
 const getRedirectUrl = async (id: string) => {
   try {
-    const res = await axios.get(`http://localhost:3000/api/shorten?id=${id}`);
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_APP_URL || ""}/api/shorten?id=${id}`
+    );
     return res.data;
   } catch (error) {
     console.log(error);
@@ -11,12 +13,15 @@ const getRedirectUrl = async (id: string) => {
   }
 };
 
-export default async function page({ params }: { params: { shortenId: string } }) {
+export default async function page({
+  params,
+}: {
+  params: { shortenId: string };
+}) {
   const redUrl = await getRedirectUrl(params.shortenId);
-  
-  if (redUrl.error || !redUrl.data || !redUrl.data.longUrl) {
-    // Handle error or invalid response here, redirect to an error page
-    notFound()
+
+  if (!redUrl?.data || !redUrl?.data?.longUrl) {
+    notFound();
   }
 
   redirect(redUrl.data.longUrl);
