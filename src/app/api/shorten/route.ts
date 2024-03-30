@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { v4 as uuidv4 } from "uuid";
 
 import { prisma } from "@/database/db";
 import { HTTP_ERROR_CODES } from "@/enums/enum";
@@ -6,7 +7,7 @@ import { HTTP_ERROR_CODES } from "@/enums/enum";
 export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json();
-        const { url } = reqBody;
+        let { url } = reqBody;
         if (!url) {
             return NextResponse.json(
                 {
@@ -18,7 +19,9 @@ export async function POST(request: NextRequest) {
                 },
             );
         }
-        if (!url.startsWith("http")) {
+        // Check if URL has a top-level domain (TLD)
+        const urlParts = url.split(".");
+        if (urlParts.length < 2) {
             return NextResponse.json(
                 {
                     message: "URL is invalid",
@@ -29,6 +32,11 @@ export async function POST(request: NextRequest) {
                 },
             );
         }
+
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            url = "https://" + url;
+        }
+
         // logic to shorten the url
         try {
             const existingUrl = await prisma.urls.findUnique({
@@ -48,7 +56,7 @@ export async function POST(request: NextRequest) {
             const newUrl = await prisma.urls.create({
                 data: {
                     longUrl: url,
-                    shortUrl: Math.random().toString(36).substring(2, 7),
+                    shortUrl: uuidv4().substr(0, 7),
                 },
             });
             return NextResponse.json({

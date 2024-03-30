@@ -22,20 +22,22 @@ const Page = () => {
     const [isCopied, setIsCopied] = useState<boolean>(false);
 
     const handleSubmit = async () => {
-        const data = {
-            url: longUrl,
-        };
+        let urlToShorten = longUrl;
         try {
             if (longUrl.length === 0) {
                 Toast.ErrorShowToast("Please enter a valid url");
                 return;
             }
             if (!longUrl.startsWith("http")) {
+                urlToShorten = `https://${longUrl}`;
+            }
+            const urlParts = urlToShorten.split(".");
+            if (urlParts.length < 2) {
                 Toast.ErrorShowToast("Please enter a valid url");
                 return;
             }
             setIsLoading(true);
-            const req = await axios.post("/api/shorten", data);
+            const req = await axios.post("/api/shorten", { url: urlToShorten });
             setResponse(req.data);
             console.log(response);
             setIsUrlGenerated(true);
@@ -65,7 +67,7 @@ const Page = () => {
         }
     };
     return (
-        <section className="flex p-4 md:p-0 justify-center items-center gap-7 w-full flex-col min-h-screen ">
+        <section className="flex p-4 md:p-0 justify-center items-center gap-7 w-full flex-col min-h-[90vh] ">
             <h1 className=" text-4xl md:text-6xl w-full font-Montserrat   mb-3  text-center font-bold bg-gradient-to-r from-purple-700 via-blue-300 to-orange-400 text-transparent bg-clip-text animate-gradient">Shorten Your Links</h1>
             <div className="flex items-center justify-center flex-col flex-wrap md:flex-row w-full gap-2 ">
                 <input type="text" onChange={(e) => setLongUrl(e.target.value)} placeholder="Enter the url" className=" bg-transparent focus:outline-none md:w-1/2 w-full focus:border-white p-4 rounded-lg border-2 border-white/10 " />
