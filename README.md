@@ -1,6 +1,6 @@
 <a href="https://github.com/ShivaBhattacharjee/Trim">
 <p align="center">
-  <img src="https://github.com/ShivaBhattacharjee/Trim/assets/95211406/75b8fe84-386a-4e14-b35b-9375e6607b09" height="180px"/>
+  <img src="https://github.com/ShivaBhattacharjee/Trim/assets/95211406/df1b6154-e5c7-4dc1-8de8-d77e83c09801" height="180px"/>
   </a>
 <br/>
   <h3 align="center">Trim</h3>
@@ -11,7 +11,6 @@
 ![NextJs](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 ![GitHub repo size](https://img.shields.io/github/repo-size/shivabhattacharjee/Trim)
-
 
   </div>
   <p align="center">
