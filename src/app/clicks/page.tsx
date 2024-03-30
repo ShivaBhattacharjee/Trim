@@ -48,10 +48,10 @@ const Page = () => {
                 ) : (
                     <div className="flex flex-col md:items-start md:justify-start gap-3 mt-7">
                         <h1 className=" mt-4 text-xl font-semibold">What is ShortId?</h1>
-                        <p className=" text-md font-medium">The last 5 digit at the end of url</p>
+                        <p className=" text-md font-medium">The last 7 digit at the end of url</p>
                         <h1 className=" text-xl font-semibold">For Example :</h1>
-                        <h1 className=" text-xl font-semibold">Url : trim.theshiva.xyz/xyz123</h1>
-                        <p className="text-md font-medium">xyz123 is the short id</p>
+                        <h1 className=" text-xl font-semibold">Url : trim.theshiva.xyz/xyz1234</h1>
+                        <p className="text-md font-medium">xyz1234 is the short id</p>
                     </div>
                 )}
             </div>
