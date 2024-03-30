@@ -50,7 +50,7 @@ const Page = () => {
                         <h1 className=" mt-4 text-xl font-semibold">What is ShortId?</h1>
                         <p className=" text-md font-medium">The last 5 digit at the end of url</p>
                         <h1 className=" text-xl font-semibold">For Example :</h1>
-                        <h1 className=" text-xl font-semibold">Url : trim.theshiva.xyz/xyz12</h1>
+                        <h1 className=" text-xl font-semibold">Url : trim.theshiva.xyz/xyz123</h1>
                         <p className="text-md font-medium">xyz123 is the short id</p>
                     </div>
                 )}
