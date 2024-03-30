@@ -51,7 +51,7 @@
 
 ![Screenshot from 2024-03-30 11-31-56](https://github.com/ShivaBhattacharjee/Trim/assets/95211406/74fef03e-b763-4e98-aeea-bd65fd901e20)
 
-Trim is a sleek and efficient URL shortener project developed using Next.js, a popular React framework for building web applications. With Trim, users can easily shorten lengthy URLs into concise, manageable links, making sharing and distributing web addresses more convenient. The project incorporates Next.js's robust capabilities for server-side rendering, optimizing performance and enhancing user experience. Trim prioritizes simplicity and effectiveness, offering a streamlined interface for users to swiftly generate shortened URLs with just a few clicks. Whether for social media sharing, email campaigns, or any other online communication, Trim empowers users to effortlessly shorten URLs and streamline their online presence.
+Trim is a sleek and efficient URL shortener project developed using Next.js. With Trim, users can easily shorten lengthy URLs into concise, manageable links, making sharing and distributing web addresses more convenient. The project incorporates Next.js's  for server-side rendering. Trim prioritizes simplicity and effectiveness, offering a streamlined interface for users to swiftly generate shortened URLs with just a few clicks. Whether for social media sharing, email campaigns, or any other online communication, Trim empowers users to effortlessly shorten URLs and streamline their online presence.
 
 
 
