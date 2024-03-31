@@ -1,6 +1,6 @@
 <a href="https://github.com/ShivaBhattacharjee/Trim">
 <p align="center">
-  <img src="https://github.com/ShivaBhattacharjee/Trim/assets/95211406/df1b6154-e5c7-4dc1-8de8-d77e83c09801" height="180px"/>
+  <img src="https://github.com/ShivaBhattacharjee/Trim/assets/95211406/fd5e276e-a168-401e-a338-2099e4e949b8" height="180px"/>
   </a>
 <br/>
   <h3 align="center">Trim</h3>
@@ -13,6 +13,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/shivabhattacharjee/Trim)
 
   </div>
+
   <p align="center">
     Trim: Shorten Your Urls
     <br/>
