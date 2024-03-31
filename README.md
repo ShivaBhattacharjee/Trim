@@ -1,9 +1,11 @@
 <a href="https://github.com/ShivaBhattacharjee/Trim">
 <p align="center">
-  <img src="https://github.com/ShivaBhattacharjee/Trim/assets/95211406/fd5e276e-a168-401e-a338-2099e4e949b8" height="180px"/>
+  <img src="https://github.com/ShivaBhattacharjee/Trim/assets/95211406/660cb529-0898-409d-bf8c-5b4c38d3bd42" height="180px"/>
   </a>
 <br/>
   <h3 align="center">Trim</h3>
+
+
 
 
 <div align="center" >
