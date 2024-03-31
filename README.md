@@ -80,6 +80,9 @@ Trim is built using NextJs
 
 <a href="https://bun.sh/">Bun</a> is a JavaScript runtime, package manager, test runner bundler built from scratch using the Zig programming language. It was designed by Jarred Sumner as a drop-in replacement for Node.js. Bun uses JavaScriptCore as the JavaScript engine, unlike Node.js and Deno, which both use V8.
 
+<a href="https://www.postgresql.org/">postgresql</a> also known as Postgres, is a free and open-source relational database management system emphasizing extensibility and SQL compliance.
+
+<a href="https://www.docker.com/">Docker</a>Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. The service has both free and premium tiers. The software that hosts the containers is called Docker Engine. It was first released in 2013 and is developed by Docker, Inc.
 
 ### Installation
 
