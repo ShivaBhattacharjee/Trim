@@ -61,7 +61,7 @@ Trim is a sleek and efficient URL shortener project developed using Next.js. Wit
 
 ## Built With
 
-Quibble is built using NextJs 
+Trim is built using NextJs 
 
 * [Bun](https://bun.sh/)
 * [NextJS](https://nextjs.org)
