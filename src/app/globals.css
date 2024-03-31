@@ -22,3 +22,25 @@
         background-position: 0% 50%;
     }
 }
+
+#Btn-NumOfClicks {
+    transition: 0.2s ease-in-out;
+}
+
+#Btn-NumOfClicks:hover {
+    scale: 1.04;
+    border: 0.5px solid white;
+}
+
+#Btn-Search {
+    transition: 0.2s ease-in-out;
+    border: 1px solid transparent;
+}
+
+#Btn-Search:hover {
+    scale: 1.04;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    box-shadow: 15px 15px rgb(50, 50, 50);
+}

@@ -90,7 +90,7 @@ const Page = () => {
                     </div>
                 </div>
             )}
-            <Link href={"/clicks"} className="flex justify-center items-center gap-3 w-full md:w-1/3 bg-transparent text-whie  font-medium border-2 border-white/20 p-4 rounded-lg">
+            <Link href={"/clicks"} className="flex justify-center items-center gap-3 w-full md:w-1/3 bg-transparent text-whie  font-medium border-2 border-white/20 p-4 rounded-lg" id="Btn-NumOfClicks">
                 <MousePointerClick />
                 Get No Of Clicks
             </Link>
