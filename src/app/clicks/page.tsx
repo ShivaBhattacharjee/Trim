@@ -38,7 +38,7 @@ const Page = () => {
                     <input type="text" onChange={(e) => setShortId(e.target.value)} className=" border-2 w-full  border-white/10 focus:outline-none focus:border-white duration-200 p-4 rounded-lg bg-transparent" />
                     <span className="absolute -top-3 font-medium  tracking-wide left-4 bg-black text-md">Enter Your ShortId</span>
                 </label>
-                <button onClick={getClicks} className=" bg-white md:mt-7 md:m-auto text-black lg:w-1/5 w-1/2 mt-2 text-xl font-medium justify-center  flex rounded-lg gap-4 items-center p-3 text-center">
+                <button onClick={getClicks} className=" bg-white md:mt-7 md:m-auto text-black lg:w-1/5 w-1/2 mt-2 text-xl font-medium justify-center  flex rounded-lg gap-4 items-center p-3 text-center" id="Btn-Search">
                     {loading ? "Searching..." : "Search"} <Search />
                 </button>
                 {renderClickDiv ? (
