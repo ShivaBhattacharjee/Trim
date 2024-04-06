@@ -161,7 +161,7 @@ Contributions are what make the open source community such an amazing place to b
 
 ### Creating A Pull Request
 
-Wanna contribute to Quibble ?
+Wanna contribute to Trim ?
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/FeatureName`)
