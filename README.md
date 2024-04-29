@@ -3,7 +3,7 @@
   <img src="https://github.com/ShivaBhattacharjee/Trim/assets/95211406/660cb529-0898-409d-bf8c-5b4c38d3bd42" height="180px"/>
   </a>
 <br/>
-  <h3 align="center">Trim</h3>
+  <h3 align="center" >Trim</h3>
 
 
 
