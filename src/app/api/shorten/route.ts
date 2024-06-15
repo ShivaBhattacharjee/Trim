@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 
-import { prisma } from "@/database/db";
+import { connect } from "@/database/db";
 import { HTTP_ERROR_CODES } from "@/enums/enum";
-
+import Url from "@/models/url.model";
+connect();
 export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json();
@@ -39,11 +40,7 @@ export async function POST(request: NextRequest) {
 
         // logic to shorten the url
         try {
-            const existingUrl = await prisma.urls.findUnique({
-                where: {
-                    longUrl: url,
-                },
-            });
+            const existingUrl = await Url.findOne({ longUrl: url });
 
             if (existingUrl) {
                 console.log("URL already exists", existingUrl);
@@ -52,13 +49,11 @@ export async function POST(request: NextRequest) {
                 });
             }
 
-            // create a new URL
-            const newUrl = await prisma.urls.create({
-                data: {
-                    longUrl: url,
-                    shortUrl: uuidv4().substr(0, 7),
-                },
+            const newUrl = new Url({
+                longUrl: url,
+                shortUrl: uuidv4().substr(0, 7),
             });
+            await newUrl.save();
             return NextResponse.json({
                 data: newUrl,
             });
@@ -106,22 +101,12 @@ export async function GET(request: NextRequest) {
         console.log("Short URL to redirect", shortUrl);
         // logic to redirect the short URL
         try {
-            const existingUrl = await prisma.urls.findUnique({
-                where: {
-                    shortUrl: shortUrl,
-                },
-            });
+            const existingUrl = await Url.findOne({ shortUrl: shortUrl });
             console.log("checking for existing URL", existingUrl);
             if (existingUrl) {
                 console.log("URL exists", existingUrl);
-                await prisma.urls.update({
-                    where: {
-                        id: existingUrl.id,
-                    },
-                    data: {
-                        clicks: existingUrl.clicks + 1,
-                    },
-                });
+                existingUrl.clicks += 1;
+                await existingUrl.save();
                 return NextResponse.json({
                     data: existingUrl,
                 });

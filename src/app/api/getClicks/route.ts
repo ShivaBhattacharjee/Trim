@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { prisma } from "@/database/db";
+import { connect } from "@/database/db";
 import { HTTP_ERROR_CODES } from "@/enums/enum";
-
+import Url from "@/models/url.model";
+connect();
 export async function GET(request: NextRequest) {
     try {
         const { searchParams } = new URL(request.url);
@@ -21,11 +22,7 @@ export async function GET(request: NextRequest) {
         console.log("Short URL to redirect", shortUrl);
         // logic to redirect the short URL
         try {
-            const existingUrl = await prisma.urls.findUnique({
-                where: {
-                    shortUrl: shortUrl,
-                },
-            });
+            const existingUrl = await Url.findOne({ shortUrl: shortUrl });
             console.log("checking for existing URL", existingUrl);
             if (existingUrl) {
                 console.log("URL exists", existingUrl);

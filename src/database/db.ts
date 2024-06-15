@@ -1,9 +1,22 @@
-import { PrismaClient } from "@prisma/client";
+import mongoose from "mongoose";
 
-const globalForPrisma = globalThis as unknown as { prisma: PrismaClient };
+export async function connect() {
+    try {
+        await mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_URI || "mongodb://localhost:27017", {
+            dbName: "Trim",
+        });
+        const connection = mongoose.connection;
 
-export const prisma = globalForPrisma.prisma || new PrismaClient();
+        connection.on("connected", () => {
+            console.log("MongoDB connected successfully");
+        });
 
-if (process.env.NODE_ENV === "development") {
-  globalForPrisma.prisma = prisma;
+        connection.on("error", (err) => {
+            console.log("MongoDB connection error. Please make sure MongoDB is running. " + err);
+            process.exit();
+        });
+    } catch (error) {
+        console.log("Something went wrong!");
+        console.log(error);
+    }
 }

@@ -38,8 +38,6 @@
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-  - [Deploy to production](#deploy-to-production)
-  - [Run prisma studio](#run-prisma-studio)
 - [Docker](#docker)
 - [Host your own](#host-your-own)
 - [Contributing](#contributing)
@@ -66,9 +64,7 @@ Trim is built using NextJs
 * [Bun](https://bun.sh/)
 * [NextJS](https://nextjs.org)
 * [TailwindCss](https://tailwindcss.com/)
-* [Prisma](https://www.prisma.io/)
-* [PostgressSql](https://www.postgresql.org/)
-
+* [MONGODB](https://www.mongodb.com/)
 
 
 ## Getting Started
@@ -119,17 +115,7 @@ bun dev
 
 This will start the development server  at http://localhost:3000/
 
-### Deploy to production
 
-```bash
-bun build:production
-```
-
-### Run prisma studio
-
-```bash
-bun prisma:studio
-```
 
 
 ## Docker 
